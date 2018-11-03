@@ -20,7 +20,7 @@ struct PassportImageCropper {
         return UIImage(cgImage: croppedImage) //, scale: image.scale, orientation: image.imageOrientation)
     }
 
-    private func rectForPassport(imageSize: CGSize, face: VNFaceObservation) -> CGRect? {
+    func rectForPassport(imageSize: CGSize, face: VNFaceObservation) -> CGRect? {
 
         // Face contour
         guard let faceContour = face.landmarks?.faceContour,

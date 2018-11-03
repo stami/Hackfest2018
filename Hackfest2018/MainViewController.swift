@@ -63,10 +63,17 @@ class MainViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
 
-        // Taken image
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
+        let imageContainer = UIView()
+        imageContainer.clipsToBounds = true
+        view.addSubview(imageContainer)
+        imageContainer.snp.makeConstraints { make in
             make.edges.equalTo(shadowContainer)
+        }
+
+        // Taken image
+        imageContainer.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -170,8 +177,28 @@ class MainViewController: UIViewController {
 
             // drawFaceLandmarksOnImage(face)
 
-            DispatchQueue.main.async {
-                self.imageView.image = PassportImageCropper().cropImageToFitFace(image: image, face: face)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+
+                guard let rect = PassportImageCropper().rectForPassport(imageSize: image.size, face: face)
+                    else { return }
+
+                let scale = image.size.height / rect.height
+                let moveX = (image.size.width / 2 - rect.midX) * (self.imageView.frame.width / image.size.width)
+                let moveY = (image.size.height / 2 - rect.midY) * (self.imageView.frame.height / image.size.height)
+
+                let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
+                let moveTransform = CGAffineTransform(translationX: moveX, y: moveY)
+                let transform = moveTransform.concatenating(scaleTransform)
+
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.imageView.transform = transform
+                }, completion: { _ in
+                    self.imageView.transform = CGAffineTransform.identity
+
+                    let croppedImage = image.cgImage!.cropping(to: rect)!
+                    self.imageView.image = UIImage(cgImage: croppedImage)
+                })
+
                 self.setButtonEnabled(true)
             }
         }
