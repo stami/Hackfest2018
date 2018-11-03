@@ -41,16 +41,26 @@ class ImageViewController: UIViewController {
         guidesImageView.contentMode = .scaleAspectFit
         guidesImageView.image = UIImage(named: "guides")
 
-        guidesImageView.layer.borderColor = UIColor.lightGray.cgColor
-        guidesImageView.layer.borderWidth = 1.0
-
         // Taken image
         view.insertSubview(imageView, belowSubview: guidesImageView)
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(guidesImageView)
         }
-        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.image = image
+
+        // Shadow under the image
+        let shadowContainer = UIView()
+        shadowContainer.backgroundColor = .white
+        view.insertSubview(shadowContainer, belowSubview: imageView)
+        shadowContainer.snp.makeConstraints { make in
+            make.edges.equalTo(guidesImageView)
+        }
+        shadowContainer.layer.shadowColor = UIColor.black.cgColor
+        shadowContainer.layer.shadowRadius = 15
+        shadowContainer.layer.shadowOpacity = 0.5
+        shadowContainer.layer.shadowOffset = .zero
 
         // Process Button
         processImageButton.setTitle("Process", for: .normal)
