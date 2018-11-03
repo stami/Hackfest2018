@@ -1,0 +1,20 @@
+PODS:
+  - SnapKit (4.0.1)
+  - SwiftyButton (0.8.2)
+
+DEPENDENCIES:
+  - SnapKit (~> 4.0.0)
+  - SwiftyButton
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+    - SwiftyButton
+
+SPEC CHECKSUMS:
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftyButton: 5b0ef314e9cf61cf8a83e456ddd1ea1f53f30598
+
+PODFILE CHECKSUM: 595f3d8d65dabbb4a177d9b64bdac9aa2560db6a
+
+COCOAPODS: 1.5.3

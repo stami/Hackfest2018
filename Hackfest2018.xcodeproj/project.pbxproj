@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08C7DBB4A85B953B760807D7 /* Pods_Hackfest2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20700DC12FCF4B94127AF09B /* Pods_Hackfest2018.framework */; };
 		88F49635218DA4BA00108415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49634218DA4BA00108415 /* AppDelegate.swift */; };
-		88F49637218DA4BA00108415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49636218DA4BA00108415 /* ViewController.swift */; };
-		88F4963A218DA4BA00108415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F49638218DA4BA00108415 /* Main.storyboard */; };
+		88F49637218DA4BA00108415 /* PickImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49636218DA4BA00108415 /* PickImageViewController.swift */; };
 		88F4963C218DA4BD00108415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F4963B218DA4BD00108415 /* Assets.xcassets */; };
 		88F4963F218DA4BD00108415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F4963D218DA4BD00108415 /* LaunchScreen.storyboard */; };
+		88F49647218DA67F00108415 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88F49646218DA67F00108415 /* Podfile */; };
+		88F49649218DAA3C00108415 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49648218DAA3C00108415 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20700DC12FCF4B94127AF09B /* Pods_Hackfest2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hackfest2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5007F2D2D0B70BA999FA97 /* Pods-Hackfest2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackfest2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018.debug.xcconfig"; sourceTree = "<group>"; };
 		88F49631218DA4BA00108415 /* Hackfest2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackfest2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F49634218DA4BA00108415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88F49636218DA4BA00108415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88F49639218DA4BA00108415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88F49636218DA4BA00108415 /* PickImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImageViewController.swift; sourceTree = "<group>"; };
 		88F4963B218DA4BD00108415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88F4963E218DA4BD00108415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88F49640218DA4BD00108415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88F49646218DA67F00108415 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		88F49648218DAA3C00108415 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		96C13ADEAAA356774B54F994 /* Pods-Hackfest2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackfest2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C7DBB4A85B953B760807D7 /* Pods_Hackfest2018.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40E97C8A7BA256F0CABC6A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20700DC12FCF4B94127AF09B /* Pods_Hackfest2018.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		88F49628218DA4BA00108415 = {
 			isa = PBXGroup;
 			children = (
 				88F49633218DA4BA00108415 /* Hackfest2018 */,
 				88F49632218DA4BA00108415 /* Products */,
+				EB38237910C8320F629929DF /* Pods */,
+				40E97C8A7BA256F0CABC6A17 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +72,23 @@
 			isa = PBXGroup;
 			children = (
 				88F49634218DA4BA00108415 /* AppDelegate.swift */,
-				88F49636218DA4BA00108415 /* ViewController.swift */,
-				88F49638218DA4BA00108415 /* Main.storyboard */,
+				88F49648218DAA3C00108415 /* AppCoordinator.swift */,
+				88F49636218DA4BA00108415 /* PickImageViewController.swift */,
 				88F4963B218DA4BD00108415 /* Assets.xcassets */,
 				88F4963D218DA4BD00108415 /* LaunchScreen.storyboard */,
 				88F49640218DA4BD00108415 /* Info.plist */,
+				88F49646218DA67F00108415 /* Podfile */,
 			);
 			path = Hackfest2018;
+			sourceTree = "<group>";
+		};
+		EB38237910C8320F629929DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E5007F2D2D0B70BA999FA97 /* Pods-Hackfest2018.debug.xcconfig */,
+				96C13ADEAAA356774B54F994 /* Pods-Hackfest2018.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88F49643218DA4BD00108415 /* Build configuration list for PBXNativeTarget "Hackfest2018" */;
 			buildPhases = (
+				8882B49C4B95F6124CE153DE /* [CP] Check Pods Manifest.lock */,
 				88F4962D218DA4BA00108415 /* Sources */,
 				88F4962E218DA4BA00108415 /* Frameworks */,
 				88F4962F218DA4BA00108415 /* Resources */,
+				0505687DBE93828A8EE67BDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,18 +153,60 @@
 			files = (
 				88F4963F218DA4BD00108415 /* LaunchScreen.storyboard in Resources */,
 				88F4963C218DA4BD00108415 /* Assets.xcassets in Resources */,
-				88F4963A218DA4BA00108415 /* Main.storyboard in Resources */,
+				88F49647218DA67F00108415 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0505687DBE93828A8EE67BDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyButton/SwiftyButton.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyButton.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8882B49C4B95F6124CE153DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hackfest2018-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88F4962D218DA4BA00108415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88F49637218DA4BA00108415 /* ViewController.swift in Sources */,
+				88F49649218DAA3C00108415 /* AppCoordinator.swift in Sources */,
+				88F49637218DA4BA00108415 /* PickImageViewController.swift in Sources */,
 				88F49635218DA4BA00108415 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +214,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88F49638218DA4BA00108415 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88F49639218DA4BA00108415 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		88F4963D218DA4BD00108415 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,6 +343,7 @@
 		};
 		88F49644218DA4BD00108415 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E5007F2D2D0B70BA999FA97 /* Pods-Hackfest2018.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +362,7 @@
 		};
 		88F49645218DA4BD00108415 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96C13ADEAAA356774B54F994 /* Pods-Hackfest2018.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
