@@ -80,7 +80,14 @@ class MainViewController: UIViewController {
     }
 
     @objc func handleButtonTap() {
-        print("share image")
+        guard let image = imageView.image
+            else { return print("no image to share") }
+
+        let targetSize = CGSize(width: Constants.photo.width, height: Constants.photo.height)
+        let resizedImage = image.resize(targetSize: targetSize)
+
+        let activityViewController = UIActivityViewController(activityItems: [resizedImage], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 
     // MARK: - Process Image
@@ -112,9 +119,9 @@ class MainViewController: UIViewController {
 
             let face = faces.first!
 
-            self.drawFaceLandmarksOnImage(face)
+            // drawFaceLandmarksOnImage(face)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
                 self.imageView.image = PassportImageCropper().cropImageToFitFace(image: image, face: face)
                 self.setButtonEnabled(true)
             }
@@ -131,7 +138,10 @@ class MainViewController: UIViewController {
     }
 
     func drawFaceLandmarksOnImage(_ face: VNFaceObservation) {
-        imageView.image = selectedImage?.withFaceLandmarksDrawn(face)
+        let image = selectedImage?.withFaceLandmarksDrawn(face)
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
     }
 
     // MARK: - Image Picker
@@ -149,7 +159,9 @@ class MainViewController: UIViewController {
 
     func useImage(_ image: UIImage) {
         selectedImage = image
-        processImage()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.processImage()
+        }
     }
 }
 
