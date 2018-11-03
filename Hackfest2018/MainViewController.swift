@@ -31,30 +31,13 @@ class MainViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(handlePickImageButtonTap))
 
-        // Guide lines
-        view.addSubview(guidesImageView)
-        guidesImageView.snp.makeConstraints { make in
-            make.top.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(guidesImageView.snp.width).dividedBy(Constants.photo.widthRatio)
-        }
-        guidesImageView.contentMode = .scaleAspectFit
-        guidesImageView.image = UIImage(named: "guides")
-        guidesImageView.isHidden = true
-
-        // Taken image
-        view.insertSubview(imageView, belowSubview: guidesImageView)
-        imageView.snp.makeConstraints { make in
-            make.edges.equalTo(guidesImageView)
-        }
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-
         // Shadow under the image
         let shadowContainer = UIView()
         shadowContainer.backgroundColor = .white
-        view.insertSubview(shadowContainer, belowSubview: imageView)
+        view.addSubview(shadowContainer)
         shadowContainer.snp.makeConstraints { make in
-            make.edges.equalTo(guidesImageView)
+            make.top.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.height.equalTo(shadowContainer.snp.width).dividedBy(Constants.photo.widthRatio)
         }
         shadowContainer.layer.shadowColor = UIColor.black.cgColor
         shadowContainer.layer.shadowRadius = 15
@@ -80,6 +63,23 @@ class MainViewController: UIViewController {
             make.centerY.equalToSuperview()
         }
 
+        // Taken image
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.edges.equalTo(shadowContainer)
+        }
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+
+        // Guide lines
+        view.addSubview(guidesImageView)
+        guidesImageView.snp.makeConstraints { make in
+            make.edges.equalTo(shadowContainer)
+        }
+        guidesImageView.contentMode = .scaleAspectFit
+        guidesImageView.image = UIImage(named: "guides")
+        guidesImageView.isHidden = true
+
         // Show Guides
         let showGuidesSwitch = UISwitch()
         showGuidesSwitch.addTarget(self, action: #selector(showGuides), for: .valueChanged)
@@ -88,7 +88,7 @@ class MainViewController: UIViewController {
         view.addSubview(showGuidesSwitch)
         view.addSubview(showGuidesLabel)
         showGuidesSwitch.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(40)
+            make.top.greaterThanOrEqualTo(shadowContainer.snp.bottom).offset(40)
             make.left.equalTo(view.safeAreaLayoutGuide).inset(40)
         }
         showGuidesLabel.snp.makeConstraints { make in
