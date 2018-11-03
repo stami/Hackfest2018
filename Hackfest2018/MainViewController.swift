@@ -1,5 +1,5 @@
 //
-//  ImageViewController.swift
+//  ViewController.swift
 //  Hackfest2018
 //
 //  Created by Samuli Tamminen on 3.11.2018.
@@ -7,30 +7,29 @@
 //
 
 import UIKit
+import SnapKit
 import SwiftyButton
 import Vision
 
-class ImageViewController: UIViewController {
+class MainViewController: UIViewController {
 
-    let image: UIImage
+    var selectedImage: UIImage? {
+        didSet {
+            imageView.image = selectedImage
+        }
+    }
 
     lazy var guidesImageView = UIImageView()
     lazy var imageView = UIImageView()
-    lazy var processImageButton = PressableButton()
-
-    init(image: UIImage) {
-        self.image = image
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    lazy var button = PressableButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        navigationItem.title = "Hackfest 2018"
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(handlePickImageButtonTap))
 
         // Guide lines
         view.addSubview(guidesImageView)
@@ -48,7 +47,7 @@ class ImageViewController: UIViewController {
         }
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = image
+        imageView.backgroundColor = .white
 
         // Shadow under the image
         let shadowContainer = UIView()
@@ -63,17 +62,33 @@ class ImageViewController: UIViewController {
         shadowContainer.layer.shadowOffset = .zero
 
         // Process Button
-        processImageButton.setTitle("Process", for: .normal)
-        processImageButton.addTarget(self, action: #selector(handleProcessImageButtonTap), for: .touchUpInside)
-        view.addSubview(processImageButton)
-        processImageButton.snp.makeConstraints { make in
+        button.setTitle("Share", for: .normal)
+        button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
+        view.addSubview(button)
+        button.snp.makeConstraints { make in
             make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(40)
             make.bottom.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(60)
         }
+
+        setButtonEnabled(false)
     }
 
-    @objc func handleProcessImageButtonTap() {
+    func setButtonEnabled(_ isEnabled: Bool) {
+        button.isEnabled = isEnabled
+        button.alpha = isEnabled ? 1.0 : 0.5
+    }
+
+    @objc func handleButtonTap() {
+        print("share image")
+    }
+
+    // MARK: - Process Image
+
+    func processImage() {
+
+        guard let image = selectedImage
+            else { return print("No image selected") }
 
         let faceLandmarksRequest = VNDetectFaceLandmarksRequest() { (request: VNRequest, error: Error?) in
 
@@ -84,8 +99,8 @@ class ImageViewController: UIViewController {
 
             guard let results = request.results,
                 !results.isEmpty else {
-                self.showAlert(title: "No faces detected", message: "Select an image that has a face in it.")
-                return
+                    self.showAlert(title: "No faces detected", message: "Select an image that has a face in it.")
+                    return
             }
 
             let faces = results.compactMap { $0 as? VNFaceObservation }
@@ -100,7 +115,8 @@ class ImageViewController: UIViewController {
             self.drawFaceLandmarksOnImage(face)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.imageView.image = PassportImageCropper().cropImageToFitFace(image: self.image, face: face)
+                self.imageView.image = PassportImageCropper().cropImageToFitFace(image: image, face: face)
+                self.setButtonEnabled(true)
             }
         }
 
@@ -115,6 +131,46 @@ class ImageViewController: UIViewController {
     }
 
     func drawFaceLandmarksOnImage(_ face: VNFaceObservation) {
-        imageView.image = image.withFaceLandmarksDrawn(face)
+        imageView.image = selectedImage?.withFaceLandmarksDrawn(face)
+    }
+
+    // MARK: - Image Picker
+
+    @objc func handlePickImageButtonTap() {
+        openImagePicker()
+    }
+
+    func openImagePicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
+
+    func useImage(_ image: UIImage) {
+        selectedImage = image
+        processImage()
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
+extension MainViewController: UIImagePickerControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            else { return print("ImagePicker did finish without image") }
+
+        if image.imageOrientation == .up {
+            useImage(image)
+        } else {
+            if let imageInUpOrientation = image.fixedOrientation() {
+                useImage(imageInUpOrientation)
+            } else {
+                showAlert(title: "Couldn't convert the image orientation", message: nil)
+            }
+        }
+    }
+}
+
+extension MainViewController: UINavigationControllerDelegate { }
