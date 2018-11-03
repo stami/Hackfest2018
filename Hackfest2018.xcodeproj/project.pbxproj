@@ -19,6 +19,7 @@
 		88F4964F218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		88F49652218DD5AC00108415 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49651218DD5AC00108415 /* Constants.swift */; };
 		88F49654218DE7D100108415 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49653218DE7D100108415 /* UIViewController+Alert.swift */; };
+		88F49656218DEBE900108415 /* Sequence+Arithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49655218DEBE900108415 /* Sequence+Arithmetic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		88F49651218DD5AC00108415 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		88F49653218DE7D100108415 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		88F49655218DEBE900108415 /* Sequence+Arithmetic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Arithmetic.swift"; sourceTree = "<group>"; };
 		96C13ADEAAA356774B54F994 /* Pods-Hackfest2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackfest2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 				88F4964C218DCBC200108415 /* UIImage+FaceLandmarks.swift */,
 				88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				88F49653218DE7D100108415 /* UIViewController+Alert.swift */,
+				88F49655218DEBE900108415 /* Sequence+Arithmetic.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				88F4964F218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				88F49635218DA4BA00108415 /* AppDelegate.swift in Sources */,
 				88F49654218DE7D100108415 /* UIViewController+Alert.swift in Sources */,
+				88F49656218DEBE900108415 /* Sequence+Arithmetic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

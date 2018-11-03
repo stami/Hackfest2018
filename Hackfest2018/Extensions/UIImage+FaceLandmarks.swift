@@ -58,40 +58,40 @@ extension UIImage {
         context?.saveGState()
 
         // outer lips
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.outerLips {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.closePath()
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.outerLips {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.closePath()
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // inner lips
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.innerLips {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.closePath()
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.innerLips {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.closePath()
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // left eye
         context?.saveGState()
@@ -130,113 +130,113 @@ extension UIImage {
         context?.saveGState()
 
         // left pupil
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.leftPupil {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.closePath()
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.blue.cgColor)
+//        if let landmark = face.landmarks?.leftPupil {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.closePath()
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // right pupil
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.rightPupil {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.closePath()
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.rightPupil {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.closePath()
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // left eyebrow
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.leftEyebrow {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.leftEyebrow {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // right eyebrow
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.rightEyebrow {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.rightEyebrow {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // nose
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.nose {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.closePath()
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.nose {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.closePath()
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // nose crest
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
-        if let landmark = face.landmarks?.noseCrest {
-            for i in 0...landmark.pointCount - 1 { // last point is 0,0
-                let point = landmark.normalizedPoints[i]
-                if i == 0 {
-                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                } else {
-                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
-                }
-            }
-        }
-        context?.setLineWidth(8.0)
-        context?.drawPath(using: .stroke)
-        context?.saveGState()
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.yellow.cgColor)
+//        if let landmark = face.landmarks?.noseCrest {
+//            for i in 0...landmark.pointCount - 1 { // last point is 0,0
+//                let point = landmark.normalizedPoints[i]
+//                if i == 0 {
+//                    context?.move(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                } else {
+//                    context?.addLine(to: CGPoint(x: x + CGFloat(point.x) * w, y: y + CGFloat(point.y) * h))
+//                }
+//            }
+//        }
+//        context?.setLineWidth(8.0)
+//        context?.drawPath(using: .stroke)
+//        context?.saveGState()
 
         // median line
         context?.saveGState()
-        context?.setStrokeColor(UIColor.yellow.cgColor)
+        context?.setStrokeColor(UIColor.blue.cgColor)
         if let landmark = face.landmarks?.medianLine {
             for i in 0...landmark.pointCount - 1 { // last point is 0,0
                 let point = landmark.normalizedPoints[i]

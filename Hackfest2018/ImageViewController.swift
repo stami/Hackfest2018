@@ -86,7 +86,13 @@ class ImageViewController: UIViewController {
                 return
             }
 
-            self.drawFaceLandmarksOnImage(faces.first!)
+            let face = faces.first!
+
+            self.drawFaceLandmarksOnImage(face)
+
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.cropImageToFitFace(face)
+//            }
         }
 
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
@@ -101,5 +107,80 @@ class ImageViewController: UIViewController {
 
     func drawFaceLandmarksOnImage(_ face: VNFaceObservation) {
         imageView.image = image.withFaceLandmarksDrawn(face)
+    }
+
+    func cropImageToFitFace(_ face: VNFaceObservation) {
+
+        guard let faceRect = rectForPassport(imageSize: image.size, face: face)
+            else { return showAlert(title: "No face rect", message: nil) }
+
+        let croppedImage = image.cgImage!.cropping(to: faceRect)!
+
+        let croppedUIImage = UIImage(cgImage: croppedImage)
+
+        imageView.image = croppedUIImage
+    }
+
+    func rectForPassport(imageSize: CGSize, face: VNFaceObservation) -> CGRect? {
+
+        print("image size: \(imageSize)")
+
+        // Face contour
+
+        guard let faceContour = face.landmarks?.faceContour,
+            !faceContour.normalizedPoints.isEmpty
+            else { return nil }
+
+        let bottomOfJawY = imageSize.height - faceContour
+            .pointsInImage(imageSize: imageSize)
+            .map { $0.y }
+            .min()!
+
+        print("bottom of jaw \(bottomOfJawY)")
+
+        // Eyes
+
+        guard let leftEye = face.landmarks?.leftEye,
+            let rightEye = face.landmarks?.rightEye
+            else { return nil }
+
+        let avgEyesY = imageSize.height - [leftEye, rightEye]
+            .map { $0.pointsInImage(imageSize: imageSize) }
+            .flatMap { $0 }
+            .map { $0.y }
+            .average()
+
+        print("average eyeline y: \(avgEyesY)")
+
+        // Median line
+
+        guard let medianLine = face.landmarks?.medianLine
+            else { return nil }
+
+        let avgMedianLineX = medianLine
+            .pointsInImage(imageSize: imageSize)
+            .map { $0.x }
+            .average()
+
+        print("average median line x: \(avgMedianLineX)")
+
+
+        // Eyeline is somewhat middle of the head
+        let topOfForeheadY = avgEyesY - (bottomOfJawY - avgEyesY)
+        print("top of forehead \(topOfForeheadY)")
+
+
+        // Without insets
+
+        let faceHeight = bottomOfJawY - topOfForeheadY
+        let faceWidth = faceHeight * (Constants.photo.width / Constants.photo.height)
+        let faceX = avgMedianLineX - (faceWidth / 2)
+        let faceY = topOfForeheadY
+
+        let rectWithoutInsets = CGRect(x: faceX, y: faceY, width: faceWidth, height: faceHeight)
+
+        print("rect without insets \(rectWithoutInsets)")
+
+        return rectWithoutInsets
     }
 }
