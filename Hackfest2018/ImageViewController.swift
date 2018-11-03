@@ -122,10 +122,7 @@ class ImageViewController: UIViewController {
 
     func rectForPassport(imageSize: CGSize, face: VNFaceObservation) -> CGRect? {
 
-        print("image size: \(imageSize)")
-
         // Face contour
-
         guard let faceContour = face.landmarks?.faceContour,
             !faceContour.normalizedPoints.isEmpty
             else { return nil }
@@ -135,10 +132,7 @@ class ImageViewController: UIViewController {
             .map { $0.y }
             .min()!
 
-        print("bottom of jaw \(bottomOfJawY)")
-
         // Eyes
-
         guard let leftEye = face.landmarks?.leftEye,
             let rightEye = face.landmarks?.rightEye
             else { return nil }
@@ -149,10 +143,7 @@ class ImageViewController: UIViewController {
             .map { $0.y }
             .average()
 
-        print("average eyeline y: \(avgEyesY)")
-
         // Median line
-
         guard let medianLine = face.landmarks?.medianLine
             else { return nil }
 
@@ -161,18 +152,10 @@ class ImageViewController: UIViewController {
             .map { $0.x }
             .average()
 
-        print("average median line x: \(avgMedianLineX)")
-
-
         // Eyeline is somewhat middle of the head
         let topOfForeheadY = avgEyesY - (bottomOfJawY - avgEyesY)
-        print("top of forehead \(topOfForeheadY)")
-
-
-        // Without insets
 
         let rectWithoutInsets = rect(middleY: avgMedianLineX, topY: topOfForeheadY, bottomY: bottomOfJawY)
-        print("rect without insets \(rectWithoutInsets)")
 
         let heightWithInsets = Constants.photo.totalHeightRatio * rectWithoutInsets.height
         let topInset = Constants.photo.topInset / Constants.photo.height * heightWithInsets
@@ -181,8 +164,6 @@ class ImageViewController: UIViewController {
         let rectWithInsets = rect(middleY: avgMedianLineX,
                                   topY: topOfForeheadY - topInset,
                                   bottomY: bottomOfJawY + bottomInset)
-
-        print("rect with insets \(rectWithInsets)")
 
         return rectWithInsets
     }
