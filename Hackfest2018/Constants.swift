@@ -16,5 +16,15 @@ struct Constants {
 
         static let topInset: CGFloat = 56
         static let bottomInset: CGFloat = 96
+
+        /// Get total height (including insets) from face height
+        static var totalHeightRatio: CGFloat {
+            return height / (height - topInset - bottomInset)
+        }
+
+        /// Get width for height retaining the aspect ratio
+        static var widthRatio: CGFloat {
+            return width / height
+        }
     }
 }

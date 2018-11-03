@@ -34,10 +34,9 @@ class ImageViewController: UIViewController {
 
         // Guide lines
         view.addSubview(guidesImageView)
-        let multiplier = Constants.photo.height / Constants.photo.width
         guidesImageView.snp.makeConstraints { make in
             make.top.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
-            make.height.equalTo(guidesImageView.snp.width).multipliedBy(multiplier)
+            make.height.equalTo(guidesImageView.snp.width).dividedBy(Constants.photo.widthRatio)
         }
         guidesImageView.contentMode = .scaleAspectFit
         guidesImageView.image = UIImage(named: "guides")
@@ -90,9 +89,9 @@ class ImageViewController: UIViewController {
 
             self.drawFaceLandmarksOnImage(face)
 
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.cropImageToFitFace(face)
-//            }
+            }
         }
 
         let orientation = CGImagePropertyOrientation(image.imageOrientation)
@@ -172,15 +171,29 @@ class ImageViewController: UIViewController {
 
         // Without insets
 
-        let faceHeight = bottomOfJawY - topOfForeheadY
-        let faceWidth = faceHeight * (Constants.photo.width / Constants.photo.height)
-        let faceX = avgMedianLineX - (faceWidth / 2)
-        let faceY = topOfForeheadY
-
-        let rectWithoutInsets = CGRect(x: faceX, y: faceY, width: faceWidth, height: faceHeight)
-
+        let rectWithoutInsets = rect(middleY: avgMedianLineX, topY: topOfForeheadY, bottomY: bottomOfJawY)
         print("rect without insets \(rectWithoutInsets)")
 
-        return rectWithoutInsets
+        let heightWithInsets = Constants.photo.totalHeightRatio * rectWithoutInsets.height
+        let topInset = Constants.photo.topInset / Constants.photo.height * heightWithInsets
+        let bottomInset = Constants.photo.bottomInset / Constants.photo.height * heightWithInsets
+        
+        let rectWithInsets = rect(middleY: avgMedianLineX,
+                                  topY: topOfForeheadY - topInset,
+                                  bottomY: bottomOfJawY + bottomInset)
+
+        print("rect with insets \(rectWithInsets)")
+
+        return rectWithInsets
+    }
+
+    func rect(middleY: CGFloat, topY: CGFloat, bottomY: CGFloat) -> CGRect {
+
+        let height = bottomY - topY
+        let width = height * Constants.photo.widthRatio
+        let x = middleY - (width / 2)
+        let y = topY
+
+        return CGRect(x: x, y: y, width: width, height: height)
     }
 }

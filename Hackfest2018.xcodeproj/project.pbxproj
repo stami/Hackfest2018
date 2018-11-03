@@ -83,6 +83,7 @@
 		88F49633218DA4BA00108415 /* Hackfest2018 */ = {
 			isa = PBXGroup;
 			children = (
+				88F49651218DD5AC00108415 /* Constants.swift */,
 				88F49634218DA4BA00108415 /* AppDelegate.swift */,
 				88F49648218DAA3C00108415 /* AppCoordinator.swift */,
 				88F49636218DA4BA00108415 /* PickImageViewController.swift */,
@@ -92,7 +93,6 @@
 				88F4963D218DA4BD00108415 /* LaunchScreen.storyboard */,
 				88F49640218DA4BD00108415 /* Info.plist */,
 				88F49646218DA67F00108415 /* Podfile */,
-				88F49651218DD5AC00108415 /* Constants.swift */,
 			);
 			path = Hackfest2018;
 			sourceTree = "<group>";
