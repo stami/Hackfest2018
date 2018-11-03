@@ -15,6 +15,10 @@
 		88F49647218DA67F00108415 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88F49646218DA67F00108415 /* Podfile */; };
 		88F49649218DAA3C00108415 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49648218DAA3C00108415 /* AppCoordinator.swift */; };
 		88F4964B218DC1B900108415 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4964A218DC1B800108415 /* ImageViewController.swift */; };
+		88F4964D218DCBC200108415 /* UIImage+FaceLandmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4964C218DCBC200108415 /* UIImage+FaceLandmarks.swift */; };
+		88F4964F218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
+		88F49652218DD5AC00108415 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49651218DD5AC00108415 /* Constants.swift */; };
+		88F49654218DE7D100108415 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F49653218DE7D100108415 /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		88F49646218DA67F00108415 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		88F49648218DAA3C00108415 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		88F4964A218DC1B800108415 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		88F4964C218DCBC200108415 /* UIImage+FaceLandmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FaceLandmarks.swift"; sourceTree = "<group>"; };
+		88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
+		88F49651218DD5AC00108415 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		88F49653218DE7D100108415 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		96C13ADEAAA356774B54F994 /* Pods-Hackfest2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hackfest2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hackfest2018/Pods-Hackfest2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,12 +85,24 @@
 				88F49648218DAA3C00108415 /* AppCoordinator.swift */,
 				88F49636218DA4BA00108415 /* PickImageViewController.swift */,
 				88F4964A218DC1B800108415 /* ImageViewController.swift */,
+				88F49650218DCED800108415 /* Extensions */,
 				88F4963B218DA4BD00108415 /* Assets.xcassets */,
 				88F4963D218DA4BD00108415 /* LaunchScreen.storyboard */,
 				88F49640218DA4BD00108415 /* Info.plist */,
 				88F49646218DA67F00108415 /* Podfile */,
+				88F49651218DD5AC00108415 /* Constants.swift */,
 			);
 			path = Hackfest2018;
+			sourceTree = "<group>";
+		};
+		88F49650218DCED800108415 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				88F4964C218DCBC200108415 /* UIImage+FaceLandmarks.swift */,
+				88F4964E218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				88F49653218DE7D100108415 /* UIViewController+Alert.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EB38237910C8320F629929DF /* Pods */ = {
@@ -210,8 +230,12 @@
 			files = (
 				88F49649218DAA3C00108415 /* AppCoordinator.swift in Sources */,
 				88F49637218DA4BA00108415 /* PickImageViewController.swift in Sources */,
+				88F4964D218DCBC200108415 /* UIImage+FaceLandmarks.swift in Sources */,
 				88F4964B218DC1B900108415 /* ImageViewController.swift in Sources */,
+				88F49652218DD5AC00108415 /* Constants.swift in Sources */,
+				88F4964F218DCE9900108415 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				88F49635218DA4BA00108415 /* AppDelegate.swift in Sources */,
+				88F49654218DE7D100108415 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
