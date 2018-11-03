@@ -29,11 +29,15 @@ class AppCoordinator {
         rootNavigationController.pushViewController(pickImageViewController, animated: false)
     }
 
-
+    func showImageScreen(image: UIImage) {
+        let imageViewController = ImageViewController(image: image)
+        rootNavigationController.pushViewController(imageViewController, animated: true)
+    }
 }
 
 extension AppCoordinator: PickImageViewControllerDelegate {
     func viewController(_ viewController: PickImageViewController, didPickImage image: UIImage) {
         print("did pick image \(image)")
+        showImageScreen(image: image)
     }
 }

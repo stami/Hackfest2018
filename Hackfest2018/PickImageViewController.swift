@@ -30,7 +30,7 @@ class PickImageViewController: UIViewController {
         pickImageButton.addTarget(self, action: #selector(handlePickImageButtonTap), for: .touchUpInside)
         view.addSubview(pickImageButton)
         pickImageButton.snp.makeConstraints { make in
-            make.top.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.bottom.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(60)
         }
     }
