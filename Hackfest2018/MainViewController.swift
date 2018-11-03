@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
         }
         guidesImageView.contentMode = .scaleAspectFit
         guidesImageView.image = UIImage(named: "guides")
+        guidesImageView.isHidden = true
 
         // Taken image
         view.insertSubview(imageView, belowSubview: guidesImageView)
@@ -47,7 +48,6 @@ class MainViewController: UIViewController {
         }
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .white
 
         // Shadow under the image
         let shadowContainer = UIView()
@@ -60,13 +60,49 @@ class MainViewController: UIViewController {
         shadowContainer.layer.shadowRadius = 15
         shadowContainer.layer.shadowOpacity = 0.5
         shadowContainer.layer.shadowOffset = .zero
+        shadowContainer.backgroundColor = .white
+
+        let instructionsStack = UIStackView()
+        instructionsStack.axis = .vertical
+        instructionsStack.spacing = 20
+
+        [
+            "Step 1. Select a image from the camera icon",
+            "Step 2. The image is scaled and cropped automagically to match official mug shot specs",
+            "Step 3. ?",
+            "Step 4. Profit",
+            ].map(createInstructionsLabel)
+            .forEach(instructionsStack.addArrangedSubview)
+
+        shadowContainer.addSubview(instructionsStack)
+        instructionsStack.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(20)
+            make.centerY.equalToSuperview()
+        }
+
+        // Show Guides
+        let showGuidesSwitch = UISwitch()
+        showGuidesSwitch.addTarget(self, action: #selector(showGuides), for: .valueChanged)
+        let showGuidesLabel = UILabel()
+        showGuidesLabel.text = "Show guides"
+        view.addSubview(showGuidesSwitch)
+        view.addSubview(showGuidesLabel)
+        showGuidesSwitch.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(40)
+            make.left.equalTo(view.safeAreaLayoutGuide).inset(40)
+        }
+        showGuidesLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(showGuidesSwitch)
+            make.left.equalTo(showGuidesSwitch.snp.right).offset(20)
+            make.right.equalTo(view.safeAreaLayoutGuide).inset(40)
+        }
 
         // Process Button
         button.setTitle("Share", for: .normal)
         button.addTarget(self, action: #selector(handleButtonTap), for: .touchUpInside)
         view.addSubview(button)
         button.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(40)
+            make.top.equalTo(showGuidesSwitch.snp.bottom).offset(40)
             make.bottom.left.right.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(60)
         }
@@ -74,9 +110,22 @@ class MainViewController: UIViewController {
         setButtonEnabled(false)
     }
 
+    func createInstructionsLabel(text: String) -> UILabel {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.text = text
+        return label
+    }
+
     func setButtonEnabled(_ isEnabled: Bool) {
         button.isEnabled = isEnabled
         button.alpha = isEnabled ? 1.0 : 0.5
+    }
+
+    @objc func showGuides(sender: UISwitch) {
+        guidesImageView.isHidden = !sender.isOn
     }
 
     @objc func handleButtonTap() {
