@@ -60,7 +60,15 @@ extension PickImageViewController: UIImagePickerControllerDelegate {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             else { return print("ImagePicker did finish without image") }
 
-        delegate?.viewController(self, didPickImage: image)
+        if image.imageOrientation == .up {
+            delegate?.viewController(self, didPickImage: image)
+        } else {
+            if let imageInUpOrientation = image.fixedOrientation() {
+                delegate?.viewController(self, didPickImage: imageInUpOrientation)
+            } else {
+                showAlert(title: "Couldn't convert the image orientation", message: nil)
+            }
+        }
     }
 }
 
