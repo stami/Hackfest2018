@@ -32,13 +32,14 @@ extension UIImage {
         let h = face.boundingBox.size.height * image.size.height
         let x = face.boundingBox.origin.x * image.size.width
         let y = face.boundingBox.origin.y * image.size.height
-        let faceRect = CGRect(x: x, y: y, width: w, height: h)
-        context?.saveGState()
-        context?.setStrokeColor(UIColor.red.cgColor)
-        context?.setLineWidth(8.0)
-        context?.addRect(faceRect)
-        context?.drawPath(using: .stroke)
-        context?.restoreGState()
+
+//        let faceRect = CGRect(x: x, y: y, width: w, height: h)
+//        context?.saveGState()
+//        context?.setStrokeColor(UIColor.red.cgColor)
+//        context?.setLineWidth(8.0)
+//        context?.addRect(faceRect)
+//        context?.drawPath(using: .stroke)
+//        context?.restoreGState()
 
         // face contour
         context?.saveGState()

@@ -175,9 +175,9 @@ class MainViewController: UIViewController {
 
             let face = faces.first!
 
-            // drawFaceLandmarksOnImage(face)
+            self.drawFaceLandmarksOnImage(face)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 
                 guard let rect = PassportImageCropper().rectForPassport(imageSize: image.size, face: face)
                     else { return }
